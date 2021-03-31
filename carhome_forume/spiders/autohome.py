@@ -20,10 +20,7 @@ class AutohomeSpider(spiders.Spider):
     base_url="https://club.autohome.com.cn/frontapi/data/page/club_get_topics_list?page_num=^&page_size=100&club_bbs_type=c&club_bbs_id=*&club_order_type=1"
     comment_url="https://club.autohome.com.cn/frontapi/comment/getcommentwithpagination?"
     def start_requests(self):
-    #   yield scrapy.Request(url="https://club.autohome.com.cn/frontapi/comment/getcommentwithpagination?topicId=9518685&replyId=1345277286&pageIndex=1&pageSize=10",callback=self.comment_comment_parse,meta={'comment_id':121})
-    #    yield scrapy.Request(url="https://club.autohome.com.cn/bbs/thread/3faa9b1329a1a50b/95188254-1.html",callback=self.comment_parse,meta={'bbs_id':121})
-       yield scrapy.Request(url="https://club.autohome.com.cn/bbs/thread/24b5a3af21113b67/83773698-1.html",callback=self.comment_parse,meta={'bbs_id':121})
-    #    yield scrapy.Request(url="https://club.autohome.com.cn/",callback=self.hot_club_parse)
+       yield scrapy.Request(url="https://club.autohome.com.cn/",callback=self.hot_club_parse)
 
     #  analyse forume id from start urls
     def hot_club_parse(self, responses):
