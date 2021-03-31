@@ -31,3 +31,6 @@
 | replyCommentId_ | Int          | 评论回复的评论id |
 | coment_id       | Int          | 评论id      |
 | content         | Varchar(250) | 回复内容      |
+
+## 启动代码
+`scrapy crawl autohome`

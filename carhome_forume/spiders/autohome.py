@@ -84,6 +84,7 @@ class AutohomeSpider(spiders.Spider):
         name=0
         while name in self.using_name_set:
             name=random.randint(0,90000)
+        self.using_name_set.add(name)
         ttfPath=self.ttfPath+str(name)+".ttf"
         print(os.getcwd())
         os.mknod(ttfPath)   
@@ -104,7 +105,7 @@ class AutohomeSpider(spiders.Spider):
         next_page_url=url.replace("-"+nums[1],"-"+str(next_page_num))
         loader.add_value('topic_id',topic_id)
         loader.add_value('bbs_id',bbs_id)
-        # yield loader.load_item()
+        yield loader.load_item()
         for reply in response.css('.js-reply-floor-container'):
             if len(reply.css('.relyhfcon'))!=0:
                 reply_url=reply.css('.relyhfcon ::attr(href)').extract()[1]
@@ -124,6 +125,8 @@ class AutohomeSpider(spiders.Spider):
             floor_replyId.append(comment_id)
             line=word_regular(line=line)
             line=word_format(line=line,font_dict=font_dict)
+            if "精华理由" in line:
+                continue
             replyloader.add_value("content",line)
             replyloader.add_value("comment_id",comment_id)
             url=self.comment_url

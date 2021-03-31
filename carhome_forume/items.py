@@ -24,7 +24,6 @@ def word_format(line,font_dict):
         content=content.replace(str.encode(new_key), str.encode(value))
         line=content.decode('unicode_escape')
     line.replace(" ", "").replace("\n", "").replace("\xa0", "")
-    print(line)
     return line
 
 class BBSItem(scrapy.Item):
