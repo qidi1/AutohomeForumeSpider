@@ -1,0 +1,21 @@
+{
+    "version":"2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "scrapy",
+            "args": [
+                "crawl",
+                "autohome",
+                // "-s",
+                // "JOBDIR=crawls/autohome-1"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
